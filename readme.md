@@ -1,2 +1,2 @@
-brew tap Faisalkc4u/kitty
+brew tap faisalkc4u/kitty
 brew install kitty
