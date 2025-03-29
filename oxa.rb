@@ -1,11 +1,15 @@
 class Oxa < Formula
-  desc "A powerful CLI tool for Mac"
+  desc "Oxa CLI - A lightweight command-line tool"
   homepage "https://github.com/Faisalkc4u/homebrew-oxa"
-  url "https://raw.githubusercontent.com/Faisalkc4u/homebrew-oxa/main/oxa.sh" # Replace "main" with your branch name if different
-  version "1.0.0"
-  sha256 "2bea2d52cd3dff22c9f21b5132aaf735c9c54aff646323b0e0d67a8913cd77a8"
+  url "https://github.com/Faisalkc4u/homebrew-oxa/archive/refs/heads/main.zip"
+  version "1.0.1"
 
   def install
-    bin.install "oxa.sh" => "oxa"
+    # Install the upgrade script
+    bin.install "upgrade.sh" => "oxa-upgrade.sh"
+  end
+
+  test do
+    system "#{bin}/oxa", "version"
   end
 end

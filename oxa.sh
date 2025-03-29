@@ -8,30 +8,23 @@ VERSION_FILE="oxa.json"  # Updated file name
 # Fetch the current version from oxa.json
 CURRENT_VERSION=$(jq -r '.version' "$VERSION_FILE")
 
-# Fetch the latest release version from GitHub API
+# Fetch the latest release version from GitHub AP#!/bin/bash
+
+REPO_URL="https://github.com/Faisalkc4u/homebrew-oxa/archive/refs/heads/main.zip"
+INSTALL_DIR="$(dirname "$(realpath "$0")")"
+
 LATEST_VERSION=$(curl -s $API_URL | jq -r '.tag_name')
 
 case "$1" in
   version)
-    echo "Current version: $CURRENT_VERSION"
-    
-    if [[ "$CURRENT_VERSION" != "$LATEST_VERSION" ]]; then
-      echo "A new version ($LATEST_VERSION) is available! Run 'oxa upgrade' to update."
-    else
-      echo "You are using the latest version!"
-    fi
+    echo "Current version: $(jq -r '.version' "$INSTALL_DIR/oxa.json")"
     ;;
   greet)
     echo "Hello, $USER! 🦊"
     ;;
   upgrade)
-    echo "Upgrading Oxa..."
-    curl -sSLo /usr/local/bin/oxa "$REPO_URL"
-    chmod +x /usr/local/bin/oxa
-    echo "Oxa upgraded successfully! 🚀"
-    
-    # Update the current version in oxa.json after upgrade
-    jq ".version = \"$LATEST_VERSION\"" "$VERSION_FILE" > tmp.$$.json && mv tmp.$$.json "$VERSION_FILE"
+     # Call the upgrade.sh script
+    bash "$INSTALL_DIR/upgrade.sh"
     ;;
   *)
     echo "Usage: oxa [version|greet|upgrade]"
