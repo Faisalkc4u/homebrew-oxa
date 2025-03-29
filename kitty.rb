@@ -1,9 +1,9 @@
-class kitty < Formula
-  desc "A simple CLI tool"
-  homepage "https://github.com/Faisalkc4u/cli_kitty"
-  url "https://github.com/Faisalkc4u/cli_kitty"
+class Kitty < Formula
+  desc "A CLI tool for managing and interacting with Kitty"
+  homepage "https://github.com/Faisalkc4u/homebrew-kitty"
+  url "https://github.com/Faisalkc4u/homebrew-kitty/releases/download/v1.0.0/kitty.sh" # Update with correct URL
   version "1.0.0"
-  sha256 "a3b2c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7a8b9c0d1e2f3"
+  sha256 "cf556d727452bf5518adccecefcc4b9246bf159eeda7b16f31dd88ded86762fa"
 
   def install
     bin.install "kitty.sh" => "kitty"
