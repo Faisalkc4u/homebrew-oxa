@@ -30,6 +30,10 @@ If you need to remove Oxa:
 
 ```sh
 brew uninstall oxa
+brew untap Faisalkc4u/oxa
+brew cleanup
+rm -rf $(brew --cache)
+
 ```
 
 Enjoy using Oxa! 🚀
